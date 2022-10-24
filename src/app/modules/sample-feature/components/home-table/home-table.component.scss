@@ -2,7 +2,8 @@
     align-items: center;
     display: flex;
     flex-direction: row;
-    min-width: calc(25% - 8px);
+    flex: 1 0 21%;
+    max-width: calc(25% - 8px);
     @media screen and (max-width: 700px) {
         margin-right: 0;
         width: 100%;
@@ -17,7 +18,7 @@
 }
 .list-wrapper {
     gap: 10px;
-    display: inline-flex;
+    display: flex;
     flex-wrap: wrap;
 }
 .data-wrapper {

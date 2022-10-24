@@ -47,12 +47,13 @@ export class HomeTableComponent implements OnInit {
     applyFilter(event: KeyboardEvent) {
         let value = (event.target as HTMLInputElement).value;
         if (!value) this.usersFiltered = Object.assign([], this.users);
-        else 
-        this.usersFiltered = Object.assign([], this.users).filter((item: UserModel) => 
-            item.name.toLowerCase().indexOf(value.toLowerCase()) > -1 
-            || item.username.toLowerCase().indexOf(value.toLowerCase()) > -1
-            || item.email.toLowerCase().indexOf(value.toLowerCase()) > -1 
-            || item.phone.toLowerCase().indexOf(value.toLowerCase()) > -1
-        );
+        else {
+            this.usersFiltered = Object.assign([], this.users).filter((item: UserModel) => 
+                item.name.toLowerCase().indexOf(value.toLowerCase()) > -1 
+                || item.username.toLowerCase().indexOf(value.toLowerCase()) > -1
+                || item.email.toLowerCase().indexOf(value.toLowerCase()) > -1 
+                || item.phone.toLowerCase().indexOf(value.toLowerCase()) > -1
+            );
+        }
     }
 }
