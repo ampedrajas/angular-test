@@ -1,0 +1,18 @@
+{
+    "GLOBAL": {
+        "CHANGE_DARK_MODE": "Change to dark mode",
+        "CHANGE_LIGHT_MODE": "Change to light mode",
+        "LOGOUT": "Logout",
+        "FILTER": "Filter",
+        "NO_DATA": "No data available for the search performed"
+    },
+    "HOME": {
+        "TITLE": "Home"
+    },
+    "SEO": {
+        "HOME": {
+            "TITLE": "Home",
+            "DESCRIPTION": ""
+        }
+    }
+}

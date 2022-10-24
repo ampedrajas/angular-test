@@ -1,0 +1,48 @@
+// Buttons styles
+
+button {
+    @include border-radius(var(--border-radius-field));
+    cursor: pointer;
+    font-size: var(--font-size-main);
+    line-height: 1.4;
+    min-height: var(--field-height);
+    min-width: 180px;
+    @media #{$large-pad-max} {
+        min-width: 130px;
+    }
+    @media #{$phone-small-max} {
+        min-width: 0;
+        width: 100%;
+        display: block;
+    }
+    &.btn {
+        border: none;
+        box-shadow: none;
+        outline: none;
+    }
+    &.btn-primary {
+        background-color: var(--primary-color);
+        color: #fff;
+    }
+    &.btn-secondary {
+        background-color: var(--secondary-color);
+        color: #fff;
+    }
+    &.btn-success {
+        background-color: var(--success-color);
+        color: #fff;
+    }
+    &.btn-transparent {
+        background: transparent;
+        color: var(--text-color);
+        font-weight: bold;
+    }
+    &.btn-block {
+        display: block;
+        max-width: var(--field-width);
+        width: 100%;
+    }
+    &:focus {
+        outline: 0;
+    }
+}

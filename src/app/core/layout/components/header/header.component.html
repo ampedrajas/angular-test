@@ -1,0 +1,49 @@
+<mat-toolbar class="header">
+    <!-- Menu -->
+    <nav>
+        <ul [class.responsive-menu]="showMenu">
+            <li class="item-menu" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                <a [routerLink]="['/home']" [title]="'HOME.TITLE' | translate" (click)="hideMenu()">{{ 'HOME.TITLE' | translate}}</a>
+            </li>
+            <!-- Color mode (light/dark) -->
+            <li class="color-mode-wrapper">
+                <color-mode-toggle [darkMode]="darkMode" (isDarkMode)="updateColorMode($event)"></color-mode-toggle>
+            </li>
+            <!-- Language selector -->
+            <li class="language-selector-wrapper">
+                <language-selector></language-selector>
+            </li>
+            <!-- User email -->
+            <li class="my-profile-wrapper item-menu pointer">
+                <div class="avatar-wrapper" [matMenuTriggerFor]="menuUser">
+                    <span class="material-icons avatar icon-prefix">account_circle</span><span>Armando del Moral</span>
+                </div>
+                <!-- Dropdown user menu -->
+                <mat-menu #menuUser="matMenu" backdropClass="my-profile-backdrop">
+                    <button mat-menu-item (click)="logOut()">
+                        <span class="material-icons icon-prefix danger-color">logout</span>
+                        <span>{{ 'GLOBAL.LOGOUT' | translate }}</span>
+                    </button>
+                </mat-menu>
+            </li>
+        </ul>
+    </nav>
+    <div class="responsive-menu-visible">
+        <!-- Color mode -->
+        <div class="color-mode-responsive">
+            <color-mode-toggle [darkMode]="darkMode" (isDarkMode)="updateColorMode($event)"></color-mode-toggle>
+        </div>
+        <!-- Hamburger icon -->
+        <div class="hamburger" [class.close-menu]="showMenu" (click)="toggleMenu()">
+            <svg width="30" height="3" fill="#333333" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 30 3.4" style="enable-background:new 0 0 30 3.4;" xml:space="preserve">
+                <path class="st0" d="M28.3,3.4H1.7C0.8,3.4,0,2.6,0,1.7l0,0C0,0.8,0.8,0,1.7,0h26.6C29.2,0,30,0.8,30,1.7l0,0C30,2.6,29.2,3.4,28.3,3.4z"/>
+            </svg>
+            <svg width="30" height="3" fill="#333333" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 30 3.4" style="enable-background:new 0 0 30 3.4;" xml:space="preserve">
+                <path class="st0" d="M28.3,3.4H1.7C0.8,3.4,0,2.6,0,1.7l0,0C0,0.8,0.8,0,1.7,0h26.6C29.2,0,30,0.8,30,1.7l0,0C30,2.6,29.2,3.4,28.3,3.4z"/>
+            </svg>
+            <svg width="30" height="3" fill="#333333" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 30 3.4" style="enable-background:new 0 0 30 3.4;" xml:space="preserve">
+                <path class="st0" d="M28.3,3.4H1.7C0.8,3.4,0,2.6,0,1.7l0,0C0,0.8,0.8,0,1.7,0h26.6C29.2,0,30,0.8,30,1.7l0,0C30,2.6,29.2,3.4,28.3,3.4z"/>
+            </svg>
+        </div>
+    </div>
+</mat-toolbar>

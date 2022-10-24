@@ -1,0 +1,231 @@
+// Mixins
+
+// ==== BORDER RADIUS ====
+// Usage: @include border-radius(50px);
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    border-radius: $radius;
+}
+
+// ==== BOX SHADOW ====
+// Usage: @include box-shadow(0, 0, 3px, #ccc);
+@mixin box-shadow($h-shadow,$v-shadow,$blur,$color) {
+    -webkit-box-shadow: $h-shadow $v-shadow $blur $color;
+    -moz-box-shadow: $h-shadow $v-shadow $blur $color;
+    box-shadow: $h-shadow $v-shadow $blur $color;
+}
+
+// ==== FLEX ====
+// Usage @include flexbox();
+@mixin flex() {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+// ==== FONT SIZE IN rem ====
+// Usage:
+// p {
+//   @include font-size(14px)
+// }
+@function calculateRem($size) {
+    $remSize: $size / 16px;
+    @return $remSize * 1rem;
+}
+
+@mixin font-size($size) {
+    font-size: $size;
+    font-size: calculateRem($size);
+}
+
+// ==== ANIMATIONS Y KEYFRAMES ====
+// Usage:
+// @include keyframes(slide-down) {
+//  0% { opacity: 1; }
+//  90% { opacity: 0; }
+// }
+//
+// .element {
+//  width: 100px;
+//  height: 100px;
+//  background: black;
+//  @include animation('slide-down 5s 3');
+// }
+@mixin keyframes($animation-name) {
+    @-webkit-keyframes #{$animation-name} {
+            @content;
+    }
+    @-moz-keyframes #{$animation-name} {
+            @content;
+    }
+    @-ms-keyframes #{$animation-name} {
+            @content;
+    }
+    @-o-keyframes #{$animation-name} {
+            @content;
+    }
+    @keyframes #{$animation-name} {
+            @content;
+    }
+}
+
+@mixin animation($str) {
+    -webkit-animation: #{$str};
+    -moz-animation: #{$str};
+    -ms-animation: #{$str};
+    -o-animation: #{$str};
+    animation: #{$str};
+}
+
+// ==== TRANSITIONS ====
+// Usage:
+// a {
+//  color: gray;
+//  @include transition(color .3s ease);
+//  &:hover {
+//  color: black;
+//  }
+// }
+@mixin transition($args...) {
+    -webkit-transition: $args;
+    -moz-transition: $args;
+    -ms-transition: $args;
+    -o-transition: $args;
+    transition: $args;
+}
+
+// Transitions items
+@mixin transition-items($n) {
+    @for $i from 1 through $n {
+        &:nth-child(#{$i}) a {
+            transition: all .6s ease-in #{$i * .1}s;
+        }
+    }
+}
+
+// ==== TRANSFORM ====
+@mixin transform($args...) {
+    -webkit-transorm: $args;
+    -moz-transform: $args;
+    -ms-transform: $args;
+    -o-transform: $args;
+    transform: $args;
+}
+
+// ==== OPACITY ====
+// This mixin ensures cross browser opacity all the way down to Internet Explorer 5. Usage:
+// .faded-text {
+//  @include opacity(0.8);
+// }
+@mixin opacity($opacity) {
+    opacity: $opacity;
+    $opacity-ie: $opacity * 100;
+    filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+// ==== CLEARFIX ====
+// Works in IE6 and up. Usage:
+// .container-with-floated-children {
+//  @extend %clearfix;
+// }
+%clearfix {
+    *zoom: 1;
+    &:before, &:after {
+        content: " ";
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+/**
+* Fix for vw, vh, vmin, vmax on iOS 7.
+* http://caniuse.com/#feat=viewport-units
+*
+* This fix works by replacing viewport units with px values on known screen sizes.
+*
+* iPhone 6 and 6 Plus cannot run iOS 7, so are not targeted by this fix.
+* Target devices running iOS 8+ will incidentally execute the media query,
+* but this will still produce the expected result; so this is not a problem.
+*
+* As an example, replace:
+*
+*   height: 50vh;
+*   font-size: 5vmin;
+*
+* with:
+*
+*   @include viewport-unit(height, 50vh);
+*   @include viewport-unit(font-size, 5vmin);
+*/
+@mixin viewport-unit($property, $value) {
+    #{$property}: $value;
+
+    $unit: unit($value);
+
+    @if (index((vw, vh, vmin, vmax), $unit) != null) {
+        $devices: (
+            (768px, 1024px), // iPad (all versions)
+            (320px, 480px),  // iPhone 4
+            (320px, 568px)   // iPhone 5, 5C, 5S
+        );
+
+        @each $device in $devices {
+            $device-width: nth($device, 1);
+            $device-height: nth($device, 2);
+
+            $device-query: "only screen and (-webkit-min-device-pixel-ratio: 1)";
+            $device-query: "#{$device-query} and (device-width: #{$device-width})";
+            $device-query: "#{$device-query} and (device-height: #{$device-height})";
+
+            $percent: $value / ($value * 0 + 1); // see https://github.com/sass/sass/issues/533
+
+            $percent-width: $device-width * $percent / 100;
+            $percent-height: $device-height * $percent / 100;
+
+            @if ($unit == vmin or $unit == vmax) {
+                @media #{$device-query} {
+                    #{$property}: if($unit == vmin, $percent-width, $percent-height);
+                }
+            }
+            @else {
+                @media #{$device-query} and (orientation: portrait) {
+                    #{$property}: if($unit == vw, $percent-width, $percent-height);
+                }
+
+                @media #{$device-query} and (orientation: landscape) {
+                    #{$property}: if($unit == vw, $percent-height, $percent-width);
+                }
+            }
+        }
+    }
+}
+
+/// Mixin printing a linear-gradient as well as a plain color fallback and the `-webkit-` prefixed declaration
+/// @param {String | List | Angle} $direction - Linear gradient direction
+/// @param {Arglist} $color-stops - List of color-stops composing the gradient
+@mixin linear-gradient($direction, $color-stops...) {
+    @if is-direction($direction) == false {
+        $color-stops: ($direction, $color-stops);
+        $direction: 180deg;
+    }
+
+    background: nth(nth($color-stops, 1), 1);
+    background: -webkit-linear-gradient(legacy-direction($direction), $color-stops);
+    background: linear-gradient($direction, $color-stops);
+}
+
+// EXAMPLES
+//.test-1 {
+//  @include linear-gradient(#31B7D7, #EDAC7D);
+//}
+//.test-2 {
+//  @include linear-gradient(to right, #E47D7D 0%, #C195D3 50%, #4FB4E8 100%);
+//}
+//.test-3 {
+//  @include linear-gradient(42deg, #B58234 0%, #D2B545 50%, #D7C04D 50.01%, #FFFFFF 100%);
+//}

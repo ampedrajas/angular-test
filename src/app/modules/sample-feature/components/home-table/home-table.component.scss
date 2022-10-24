@@ -1,0 +1,31 @@
+.users-wrapper {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    min-width: calc(25% - 8px);
+    @media screen and (max-width: 700px) {
+        margin-right: 0;
+        width: 100%;
+    }
+    @media screen and (max-width: 1500px) {
+        min-width: calc(33% - 3px);
+    }
+    @media screen and (max-width: 1200px) {
+        min-width: calc(50% - 5px);
+    }
+
+}
+.list-wrapper {
+    gap: 10px;
+    display: inline-flex;
+    flex-wrap: wrap;
+}
+.data-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    .title-item {
+        font-weight: bold;
+        margin: 0;
+    }
+}

@@ -1,0 +1,10 @@
+// Images styles
+
+img {
+    &:focus {
+        outline: none;
+    }
+    &.link-image {
+        cursor: pointer;
+    }
+}

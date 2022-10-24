@@ -1,0 +1,9 @@
+<div class="loading-bar-wrapper">
+    <div class="line-wrapper" *ngFor="let i of [].constructor(numBars)">
+        <div class="line-loading"
+        [class.full-width-loading]="customClass === 'full-width-loading'"
+        [class.line-loading-header]="customClass === 'line-loading-header'"
+        [class.small-line-loading]="customClass === 'small-line-loading'"
+        [class.large-bar]="customClass === 'large-bar'"></div>
+    </div>
+</div>

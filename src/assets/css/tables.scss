@@ -1,0 +1,16 @@
+// Tables styles
+
+.table-responsive {
+    clear: both;
+    overflow-x: auto;
+    @media #{$large-pad-max} {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+.table {
+    width: 100%;
+}

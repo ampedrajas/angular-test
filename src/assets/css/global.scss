@@ -1,0 +1,55 @@
+// Global styles
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+  display: block;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    background: var(--bg-light-color);
+    color: var(--text-color);
+    font-family: var(--font-main);
+    font-size: var(--font-size-main);
+    line-height: 1.4;
+    min-width: 320px;
+}
+
+.content-wrapper {
+    margin: auto;
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+::selection {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+.avatar-user-item {
+    align-items: center;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    color: #fff;
+    display: flex;
+    font-size: 20px;
+    font-weight: 400;
+    height: 50px;
+    justify-content: center;
+    padding: 6px;
+    text-align: center;
+    width: 50px;
+}
+.link-item {
+    color: var(--primary-color);
+}

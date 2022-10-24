@@ -1,0 +1,25 @@
+<div class="table-responsive">
+    <div class="table-options clearfix">
+        <mat-form-field appearance="fill" class="filter-wrapper">
+            <input matInput (keyup)="applyFilter($event)" placeholder="{{ 'GLOBAL.FILTER' | translate }}">
+        </mat-form-field>
+    </div>
+    <div class="list-wrapper">
+        <mat-card class="users-wrapper" *ngFor="let user of usersFiltered">
+            <div class="avatar-wrapper">
+                <span class="avatar-user-item"><span>{{user.shortName}}</span></span>
+            </div>
+            <div class="data-wrapper">
+                <h3 class="title-item">{{ user.name | slice:0:25 }}{{ user.name.length > 25 ? '...' : '' }}</h3>
+                <span class="subtitle-item"> {{user.username }}</span>
+                <a class="link-item" href="mailto:{{user.email}}"> {{user.email }}</a>
+                <a class="link-item" href="tel:{{user.phone}}"> {{user.phone }}</a>
+            </div>
+        </mat-card>
+        <div *ngIf="usersFiltered && usersFiltered.length == 0">
+            <mat-card>
+                <span class="no-data-item">{{ 'GLOBAL.NO_DATA' | translate }}</span>
+            </mat-card>
+        </div>
+    </div>
+</div>

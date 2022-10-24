@@ -1,0 +1,42 @@
+.loading-bar-wrapper {
+    .line-wrapper {
+        display: block;
+        margin-bottom: 10px;
+        .line-loading {
+            @extend .animated-bg-dark;
+            border-radius: 2px;
+            height: 48px;
+            max-width: 400px;
+            width: 100%;
+            &.large-bar {
+                height: 60px;
+                max-width: 100%;
+            }
+            &.line-loading-header {
+                height: 30px;
+                max-width: 150px;
+                position: relative;
+                top: 5px;
+                width: 150px;
+            }
+            &.full-width-loading {
+                max-width: 100%;
+            }
+            &.small-line-loading {
+                height: 20px;
+            }
+        }
+    }
+}
+
+.animated-bg-dark {
+    animation-duration: 1.25s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: placeHolderShimmer;
+    animation-timing-function: linear;
+    background: rgba(0, 0, 0, 0.3);
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.1) 8%, rgba(0, 0, 0, 0.2) 18%, rgba(0, 0, 0, 0.1) 33%);
+    background-size: 800px 100px;
+    position: relative;
+}

@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'assets/css/normalize.scss';
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import 'assets/css/fonts.scss';
+@import 'assets/css/icons.scss';
+@import 'assets/css/variables.scss';
+@import 'assets/css/mixins.scss';
+@import 'assets/css/animations.scss';
+@import 'assets/css/global.scss';
+@import 'assets/css/buttons.scss';
+@import 'assets/css/tables.scss';
+@import 'assets/css/links.scss';
+@import 'assets/css/images.scss';
+@import 'assets/css/material.scss';
+@import 'assets/css/headings.scss';
+@import 'assets/css/header.scss';
+@import 'assets/css/sidebar.scss';
+@import 'assets/css/footer.scss';
+@import 'assets/css/custom.scss';
+
+// Override default font of the Material theme
+@import '@angular/material/theming';
+$custom-typography: mat-typography-config(
+  $font-family: var(--font-main)
+);
+@include mat-core($custom-typography);

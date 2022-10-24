@@ -1,0 +1,27 @@
+// Custom styles (pages, components...)
+
+.auth {
+    background: var(--bg-color);
+    .logo {
+        margin-bottom: 20px;
+    }
+    form {
+        width: var(--field-width);
+    }
+    .btn {
+        margin-bottom: 10px;
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+    .content-wrapper {
+        margin: 100px auto;
+        max-width: 430px;
+        text-align: center;
+        .language-selector-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+    }
+}

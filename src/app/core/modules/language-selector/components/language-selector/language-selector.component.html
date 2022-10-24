@@ -1,0 +1,13 @@
+<span class="change-language">
+    <!-- Language selector -->
+    <span class="language-selector item-menu" [matMenuTriggerFor]="menuLanguages">
+        <img class="flag" [src]="currentLang?.icon" alt="{{ 'GLOBAL.FLAG_OF_LANGUAGE' | translate }}" width="20">{{ currentLang?.name }}
+    </span>
+    <!-- Dropdown languages selector -->
+    <mat-menu #menuLanguages="matMenu" class="dropdown-languages" backdropClass="language-selector-backdrop">
+        <button mat-menu-item *ngFor="let lang of availableLangs" (click)="changeLang(lang)">
+            <img class="flag-language" [src]="lang.icon" alt="" width="20">
+            <span>{{ lang.description }}</span>
+        </button>
+    </mat-menu>
+</span>

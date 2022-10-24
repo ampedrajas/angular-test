@@ -1,0 +1,12 @@
+// Links styles
+
+a {
+    text-decoration: none;
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+.pointer {
+    cursor: pointer;
+}

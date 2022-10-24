@@ -1,0 +1,63 @@
+// Variables
+
+:root {
+    // Colors
+    --primary-color: #e6a356;
+    --primary-light-color: #f2ad5e;
+    --secondary-color: #fff;
+    --secondary-light-color: #fff;
+    --tertiary-color: #091d25;
+    --tertiary-light-color: #222f34;
+    --text-color: #4d4d4d;
+    --success-color: #4eb756;
+    --danger-color: #eb3c3c;
+    --warning-color: #f39929;
+    --info-text-color: #999;
+    --bg-color: #ccc;
+    --bg-light-color: #f5f5f5;
+    --header-color: #fff;
+    --table-color: #fff;
+    --menu-color: #fff;
+    --menu-light-color: #f5f5f5;
+    
+    // Fonts
+    --font-main: 'Montserrat', sans-serif;
+    --font-heading: 'Montserrat', sans-serif;
+    --font-size-main: 14px;
+
+    // Form
+    --field-height: 50px;
+    --field-width: 400px;
+    --border-radius-field: 5px;
+}
+
+// Dark mode
+[data-color-mode=dark] {
+    // Colors
+    --text-color: #f5f5f5;
+    --info-text-color: #eee;
+    --bg-color: #333;
+    --bg-light-color: #333;
+    --header-color: #333;
+    --table-color: #555;
+    --menu-color: #555;
+    --menu-light-color: #666;
+}
+
+// Media queries
+// E.g.: @media #{$phone-max} {}
+$phone-small-max: "screen and (max-width: 399px)";
+$phone-max: "screen and (max-width: 599px)";
+$pad-max: "screen and (max-width: 799px)";
+$large-pad-max: "screen and (max-width: 899px)";
+$medium-laptop-max: "screen and (max-width: 991px)";
+$large-laptop-max: "screen and (max-width: 1199px)";
+$desktop-max: "screen and (max-width: 1279px)";
+
+$phone-min: "screen and (min-width: 400px)";
+$pad-min: "screen and (min-width: 600px)";
+$large-pad-min: "screen and (min-width: 800px)";
+$medium-laptop-min: "screen and (min-width: 900px)";
+$large-laptop-min: "screen and (min-width: 992px)";
+$desktop-min: "screen and (min-width: 1200px)";
+$large-desktop-min: "screen and (min-width: 1280px)";

@@ -1,0 +1,18 @@
+{
+    "GLOBAL": {
+        "CHANGE_DARK_MODE": "Cambiar a modo oscuro",
+        "CHANGE_LIGHT_MODE": "Cambiar a modo claro",
+        "LOGOUT": "Cerrar sesión",
+        "FILTER": "Filtrar",
+        "NO_DATA": "No hay datos para la búsqueda realizada"
+    },
+    "HOME": {
+        "TITLE": "Inicio"
+    },
+    "SEO": {
+        "HOME": {
+            "TITLE": "Inicio",
+            "DESCRIPTION": ""
+        }
+    }
+}
